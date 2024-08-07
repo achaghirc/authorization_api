@@ -1,5 +1,5 @@
 class Action < ApplicationRecord
-    belogns_to :application
+    belongs_to :application
     has_many :action_permission
     has_many :permissions, through: :action_permission
 end

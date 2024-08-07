@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_06_184716) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_07_002024) do
   create_table "action_permissions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "permission_id"
+    t.integer "action_id"
   end
 
   create_table "actions", force: :cascade do |t|
@@ -21,6 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_06_184716) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "application_id"
   end
 
   create_table "applications", force: :cascade do |t|

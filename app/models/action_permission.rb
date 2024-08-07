@@ -1,4 +1,4 @@
 class ActionPermission < ApplicationRecord
-    belogns_to :actions
-    belogns_to :permissions
+    belongs_to :action
+    belongs_to :permission
 end
