@@ -18,7 +18,7 @@ app3 = Application.find_or_create_by!(name: 'Sales Application')
 manage_app_action = app.actions.find_or_create_by!(name: 'Manage App Actions', code: 'MANAGE_APP_ACTIONS')
 
 doc_create_action = app1.actions.find_or_create_by!(name: 'Document Create', code: 'DOCUMENT_CREATE')
-doc_aprove_action = app1.actions.find_or_create_by!(name: 'Document Aprove', code: 'DOCUMENT_APROVE')
+doc_approve_action = app1.actions.find_or_create_by!(name: 'Document Approve', code: 'DOCUMENT_APPROVE')
 doc_sign_action = app1.actions.find_or_create_by!(name: 'Document Sign', code: 'DOCUMENT_SIGN')
 
 hr_info_action = app2.actions.find_or_create_by!(name: 'Human Resources User Info', code: 'HR_USER_INFO')
@@ -37,7 +37,7 @@ doc_sign_permission = Permission.find_or_create_by!(name: 'Sign Documents', code
 hr_info_permission = Permission.find_or_create_by!(name: 'HR User Info', code: 'HR_USER_INFO')
 
 s_o_create_permission = Permission.find_or_create_by!(name: 'Sales Order Create', code: 'SALES_ORDER_CREATE')
-s_o_approve_permission = Permission.find_or_create_by!(name: 'Sales Order Aprove', code: 'SALES_ORDER_APROVE')
+s_o_approve_permission = Permission.find_or_create_by!(name: 'Sales Order Approve', code: 'SALES_ORDER_APPROVE')
 s_o_reject_permission = Permission.find_or_create_by!(name: 'Sales Order Reject', code: 'SALES_ORDER_REJECT')
 
 # Create Action Permissions
@@ -45,7 +45,7 @@ s_o_reject_permission = Permission.find_or_create_by!(name: 'Sales Order Reject'
 ActionPermission.find_or_create_by!(action: manage_app_action, permission: permission_it_admin)
 
 ActionPermission.find_or_create_by!(action: doc_create_action, permission: doc_create_permission)
-ActionPermission.find_or_create_by!(action: doc_aprove_action, permission: doc_approve_permission)
+ActionPermission.find_or_create_by!(action: doc_approve_action, permission: doc_approve_permission)
 ActionPermission.find_or_create_by!(action: doc_sign_action, permission: doc_sign_permission)
 
 ActionPermission.find_or_create_by!(action: hr_info_action, permission: hr_info_permission)
