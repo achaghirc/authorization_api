@@ -31,10 +31,4 @@ class AuthorizationController < ApplicationController
             render json: {error: 'Action not found'}, status: :not_found
         end
     end
-
-    private
-        def authorize_user
-            print('here is the authorize: ',request.headers["Authorization"])
-        end
-
 end

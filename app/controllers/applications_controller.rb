@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-    before_action :authorize_user, only: [:index, :update, :destroy]
+    include AuthorizationConcern
     
     #GET /applications
     def index
@@ -54,6 +54,21 @@ class ApplicationsController < ApplicationController
         end
 
         def authorize_user
-            print('here is the authorize: ',request.headers["Authorization"])
+            if params[:user_permissions_code] == nil 
+                render json:{error: 'Bad request, forgotted user_permission_code'}, status: :bad_request 
+            else 
+                permissions_code = params[:user_permissions_code]
+                authorized = false
+                @permissions = Permission.where(code: permissions_code)
+                @permissions.each do |permission|
+                    if permission && permission.code == 'IT_ADMIN'
+                        authorized = true
+                        break
+                    end
+                end
+                if !authorized
+                    render json: { error: 'You are not authorized to do this action' }, status: :unauthorized
+                end
+            end
         end
 end
